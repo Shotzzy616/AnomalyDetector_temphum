@@ -1,17 +1,11 @@
 # AnomalyDetector_temphum
 ESP32 Temperature and Humidity Monitoring System with Machine Learning
 
-Here’s a brief description you can use for your GitHub project:
-
 ---
 
 # Temperature and Humidity Monitoring System with Anomaly Detection
 
----
-
 ## Overview
-
----
 
 This project implements a real-time temperature and humidity monitoring system using an ESP32S3 microcontroller and a DHT11 sensor. The system sends sensor data to a Flask server for storage and anomaly detection using a One-Class Support Vector Machine (SVM) model.
 
