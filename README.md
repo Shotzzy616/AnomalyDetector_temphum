@@ -1,4 +1,4 @@
-# AnomalyDetector_temphum
+# AnomalyDetector_temprature_humidity
 ESP32 Temperature and Humidity Monitoring System with Machine Learning
 
 ---
