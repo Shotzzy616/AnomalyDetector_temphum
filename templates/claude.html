@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude | About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/claude.css">
+</head>
+<body>
+   <!-- ===== MODAL BOX ===== -->
+     
+   <div class="modal" id="myModal">
+       <div class="modal-content">
+           <span class="close"><i class="fa fa-times"></i></span>
+           <div class="content-title">
+               <span>Skills</span>
+           </div>
+           <div class="skills-box">
+               <span class="skills-label">Machine Learning</span>
+               <span class="skills-label">C++</span>
+               <span class="skills-label">Python</span>
+               <span class="skills-label">Mechtronics</span>
+           </div>
+       </div>
+   </div>
+
+   <div class="modal" id="myModal1">
+    <div class="modal-content">
+        <span class="close"><i class="fa fa-times"></i></span>
+        <div class="content-title">
+            <span>Service We Offer</span>
+        </div>
+        <div class="desc_content">
+            <p>I work together with my team to offer best services in:</p>
+            <ul class="services_list">
+                <li>Data Storage</li>
+                <li>AI Integratio</li>
+                <li>Server Management</li>
+                <li>Microcontroller Programming</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <div class="modal" id="myModal2">
+    <div class="modal-content">
+        <span class="close"><i class="fa fa-times"></i></span>
+        <div class="content-title">
+            <span>About Me</span>
+        </div>
+         <p>I am a skilled and creative frontend web developer with a passion for crafting engaging 
+                and user-friendly web interfaces. My expertise lies in transforming design concepts into 
+                responsive and visually appealing websites and web applications. 
+                With a strong foundation in HTML, CSS, and JavaScript, I excel at implementing responsive design, 
+                optimizing performance, and ensuring cross-browser compatibility</p>
+    </div>
+</div>
+
+
+
+   <!-- ===== END OF  MODAL BOX ===== -->
+
+   <!-- ===== WRAPPER ===== -->
+    <div class="wrapper">
+        <!-- ===== NAVIGATION BAR ===== -->
+        <nav class="nav">
+            <div class="nav_logo">
+                <span>Claude</span>
+            </div>
+            <div class="right_nav">
+                <div class="nav_menu" id="navMenu">
+                    <ul class="link_list">
+                        <div class="close-menu">
+                            <i class="fa fa-times" onclick="menuClose()"></i>
+                        </div>
+                        <li class="list">
+                            <a href="index.html" class="link">Home</a>
+                        </li>
+                        <li class="list">
+                            <a href="#myModal" class="link" id="myBtn">Skills <i class="fa-solid fa-caret-down"></i></a>
+                            <div class="description_box">
+                                <div class="link_description" id="myDescription">
+                                    <div class="content-title">
+                                        <span>I'm Skilled In</span>
+                                    </div>
+                                    <div class="desc_content">
+                                        <span class="skills-label">Machine Learning</span>
+                                        <span class="skills-label">C++</span>
+                                        <span class="skills-label">Python</span>
+                                        <span class="skills-label">Mechtronics</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <a href="#myModal1" class="link" id="myBtn">Services <i class="fa-solid fa-caret-down"></i></a>
+                            <div class="description_box">
+                                <div class="link_description" id="myDescription">
+                                    <div class="content-title">
+                                        <span>Service We Offer</span>
+                                    </div>
+                                    <div class="desc_content">
+                                        <p>I work together with my team to offer best services in:</p>
+                                        <ul class="services_list">
+                                            <li>Data Storage</li>
+                                            <li>AI Integration</li>
+                                            <li>Server Management</li>
+                                            <li>Microcontroller Programming</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list">
+                            <a href="#myModal2" class="link" id="myBtn">About <i class="fa-solid fa-caret-down"></i></a>
+                            <div class="description_box about_box">
+                                <div class="link_description" id="myDescription">
+                                    <div class="content-title">
+                                        <span>About Me</span>
+                                    </div>
+                                    <div class="desc_content">
+                                        <p>As a mechatronics engineer, I thrive at the intersection of robotics, machine learning, and AI. My passion lies in crafting innovative solutions that push the boundaries of technology and enhance our daily lives. By integrating mechanics, electronics, and intelligent algorithms, I aim to develop systems that not only solve complex problems but also learn and adapt over time. Whether it’s designing automated processes or creating intelligent robotic systems, I’m dedicated to making a positive impact through my work in the ever-evolving field of engineering.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="nav_button">
+                    <a href="assets/pdf/download.pdf" class="btn"><i class="fa fa-download"></i> <span>Download CV</span></a>
+                </div>
+                <div class="mode">
+                    <div class="moon-sun" id="toggle-switch">
+                        <i class="fa fa-moon" id="moon"></i>
+                        <i class="fa fa-sun" id="sun"></i>
+                    </div>
+                </div>
+                <div class="nav_menu_btn">
+                    <i class="fa fa-bars" onclick="myMenuFunction()"></i>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- ===== MAIN ===== -->
+        <main class="main">
+            <div class="row hero">
+                <div class="col col-1">
+                    <div class="social_icons">
+                         <!-- ===== Icon animated circle ===== -->
+                        <div class="icon_circle"></div>
+
+                        <!-- ===== Social Icons  ===== -->
+                        <a href="https://github.com/Shotzzy616" target="_blank" style="text-decoration: none;" rel="noopener noreferrer">
+                            <i class="fa-brands fa-linkedin-in icon"></i>
+                        </a>
+                        <a href="https://x.com/claude_c137" target="_blank" style="text-decoration: none;" rel="noopener noreferrer">
+                            <i class="fa-brands fa-twitter icon"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" style="text-decoration: none;" rel="noopener noreferrer">
+                            <i class="fa-brands fa-github icon"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@ClaudeOnOxy" target="_blank" style="text-decoration: none;" rel="noopener noreferrer">
+                            <i class="fa-brands fa-youtube icon"></i>
+                        </a>
+                    </div>
+                    <!-- ===== HERO TEXT  ===== -->
+
+                    <div class="hero_box">
+                        <div class="hello">
+                            <p>Hello, There</p>
+                        </div>
+                        <div class="job">
+                            <span class="multiText"></span>
+                        </div>
+                        <div class="hero_description">
+                            <p>As a mechatronics engineer, I thrive at the intersection of robotics, machine learning, and AI, crafting innovative solutions that push the boundaries of technology.</p>
+                        </div>
+                        <div class="hero_btn">
+                            <button class="btn_1"><a href="login.html">Log In</a></button>
+                            <button class="btn_2"><a href="assets/pdf/download.pdf">Download CV</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="circle">
+                        <img src="images/—Pngtree—personality black ink doodle elements_3692536.png" alt="">
+                    </div>
+                    <div class="hero-image">
+                        <img src="images/result (1).png" alt="">
+                    </div>
+                    <div class="clients">
+                        <i class="fa-regular fa-user"></i>
+                        <div class="clients-content">
+                            <span>5 +</span>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+                    <div class="experience">
+                        <i class="fa-regular fa-star"></i>
+                        <div class="xp-content">
+                            <span>1 +</span>
+                            <p>Years of experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+        // Types JS
+        var typingEffect = new Typed(".multiText",{
+            strings: ["Mechatronics","Coding","Machine Learning"],
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 80,
+            backDelay: 2000
+        })
+        // End of typed JS
+    </script>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

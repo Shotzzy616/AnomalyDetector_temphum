@@ -1,0 +1,58 @@
+body {
+    background-color: #36393f;  /* Discord's dark background */
+    color: #dcddde;  /* Light text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    color: #ffffff;  /* White heading */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;  /* Center the title */
+}
+
+#weather-data {
+    background-color: #2f3136;  /* Card background color */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#weather-data h3 {
+    color: #ffffff;  /* White header for weather data */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+strong {
+    color: #7289da;  /* Discord blue for strong text */
+}
+
+.list-group-item {
+    background-color: #2f3136;  /* Dark list item background */
+    color: #dcddde;  /* Light text color for list items */
+    border: none;  /* No borders */
+    border-radius: 5px;  /* Rounded corners */
+    padding: 10px;
+    margin: 5px 0;  /* Space between items */
+    transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+.list-group-item:hover {
+    background-color: #424549;  /* Slightly lighter on hover */
+}
+
+footer {
+    margin-top: 20px;
+    color: #b0b0b0;  /* Light gray for footer */
+    text-align: center;  /* Center the footer text */
+}
+
+.container {
+    max-width: 600px;  /* Limit width for better focus */
+    margin: auto;  /* Center container */
+    padding: 20px;  /* Add padding */
+    border-radius: 10px;  /* Round corners for the container */
+    background-color: #202225;  /* Darker background for the entire container */
+}

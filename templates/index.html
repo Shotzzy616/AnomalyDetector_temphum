@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Sensor Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="bg-dark text-light">
+    <div class="container mt-5">
+        <h1>Real-Time Sensor Data</h1>
+        <div id="weather-data" class="mt-4">
+            <ul class="list-group">
+                <li class="list-group-item graph-btn" data-type="Temperature (°C)"><strong>Temperature:</strong> <span id="temperature"></span> °C</li>
+                <li class="list-group-item graph-btn" data-type="Humidity (%)"><strong>Humidity:</strong> <span id="humidity"></span> %</li>
+                <li class="list-group-item graph-btn" data-type="LPG"><strong>LPG:</strong> <span id="lpg"></span></li>
+                <li class="list-group-item graph-btn" data-type="CO"><strong>CO:</strong> <span id="co"></span></li>
+                <li class="list-group-item graph-btn" data-type="Smoke"><strong>Smoke:</strong> <span id="smoke"></span></li>
+                <li class="list-group-item"><strong>Prediction:</strong> <span id="prediction"></span></li>
+            </ul>            
+        </div>
+        <canvas id="myChart" style="display:none; margin-top: 20px;"></canvas>
+        <footer class="mt-5">
+            <p>&copy; 2024 Model. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
