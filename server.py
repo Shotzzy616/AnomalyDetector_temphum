@@ -22,11 +22,11 @@ csv_prediction = 'prediction.csv'
 # Check if the CSV file exists, and create it with headers if not
 if not os.path.exists(csv_file):
     with open(csv_file, 'w') as f:
-        f.write('Timestamp,Temperature (°C),Humidity (%)\n')
+        f.write('Timestamp,Temperature (°C),Humidity (%),lpg,co,smoke\n')
         
 if not os.path.exists(csv_prediction):
     with open(csv_prediction, 'w') as f:
-        f.write('Timestamp,Temperature (°C),Humidity (%),Prediction\n')
+        f.write('Timestamp,Temperature (°C),Humidity (%),lpg,co,smoke,Prediction\n')
         
         
         
@@ -54,24 +54,30 @@ def receive_data():
     # Get JSON data from ESP32S3
     data = request.json
     
-    # Extract temperature and humidity
+    # Extract temperature, humidity, and gas data (LPG, CO, Smoke)
     temperature = data.get('temperature')
     humidity = data.get('humidity')
+    lpg = data.get('lpg')          # New data from MQ-2 sensor
+    co = data.get('co')            # New data from MQ-2 sensor
+    smoke = data.get('smoke')      # New data from MQ-2 sensor
     timestamp = data.get('timestamp')
     
-    if temperature is not None and humidity is not None:
+    if temperature is not None and humidity is not None and lpg is not None and co is not None and smoke is not None:
         # Create a DataFrame for the new data
         new_data = pd.DataFrame({
             'Timestamp': [timestamp],
             'Temperature (°C)': [temperature],
-            'Humidity (%)': [humidity]
+            'Humidity (%)': [humidity],
+            'LPG': [lpg],        # Store LPG reading
+            'CO': [co],          # Store CO reading
+            'Smoke': [smoke]     # Store Smoke reading
         })
-        test_data = new_data[['Temperature (°C)','Humidity (%)']]
+        test_data = new_data[['Temperature (°C)', 'Humidity (%)']]
 
         # Append new data to the CSV file
         new_data.to_csv(csv_file, mode='a', header=False, index=False)
 
-        # Normalize new data and predict anomalies
+        # Normalize new data and predict anomalies (only for temperature and humidity)
         new_data_scaled = scaler.transform(test_data)
         prediction = svm_model.predict(new_data_scaled)
 
@@ -80,26 +86,33 @@ def receive_data():
             'timestamp': timestamp,
             'temperature': temperature,
             'humidity': humidity,
+            'lpg': lpg,          # Include LPG value in response
+            'co': co,            # Include CO value in response
+            'smoke': smoke,      # Include Smoke value in response
             'prediction': int(prediction[0]),  # 1 for normal, -1 for anomaly
         }
         
+        # Log the prediction to a CSV file
         predict = pd.DataFrame({
             'Timestamp': [timestamp],
             'Temperature (°C)': [temperature],
             'Humidity (%)': [humidity],
-            'prediction': [int(prediction[0])]
+            'LPG': [lpg],
+            'CO': [co],
+            'Smoke': [smoke],
+            'Prediction': [int(prediction[0])]  # Ensuring the prediction is an integer
         })
 
-        # Append new data to the CSV file
+        # Append new prediction data to the CSV file
         predict.to_csv(csv_prediction, mode='a', header=False, index=False)
         
         return jsonify(response), 200
     else:
         return jsonify({"error": "Invalid data received."}), 400
 
+
 @app.route('/get_data', methods=['GET'])
 def send_data():
-    render_template('data.html')
     # Load historical data for the last n entries
     data_history = pd.read_csv(csv_prediction)
     return jsonify(data_history.tail(10).to_dict(orient='records')), 200  # Returns the last 10 predictions
