@@ -2,15 +2,16 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <time.h>
+#include <MQ2.h>
 
 // DHT11 sensor configuration
 #define DHTPIN D0          // Pin where the DHT11 is connected
 #define DHTTYPE DHT11     // Define the sensor type (DHT11)
-#define RED_PIN D1
-#define GREEN_PIN D2
+#define A0_PIN D2
 #define BLUE_PIN D3
 
 DHT dht(DHTPIN, DHTTYPE);
+MQ2 mq2(A0_PIN);
 
 // WiFi configuration
 const char* ssid = "Shotzzy";       // Your WiFi SSID
@@ -28,14 +29,13 @@ void setup() {
   // Initialize DHT sensor
   dht.begin();
 
+  // Initialize MQ2 sensor
+  mq2.begin();
+
   // Initialize RGB LED pins
-  pinMode(RED_PIN, OUTPUT);
-  pinMode(GREEN_PIN, OUTPUT);
   pinMode(BLUE_PIN, OUTPUT);
 
   // Turn off the LED at the beginning
-  digitalWrite(RED_PIN, LOW);
-  digitalWrite(GREEN_PIN, LOW);
   digitalWrite(BLUE_PIN, LOW);
   
   // Connect to Wi-Fi
@@ -83,11 +83,14 @@ void blinkBlue(int frequency) {
 
 void loop() {
   // Wait a few seconds between measurements
-  delay(1000);
+  delay(5000);
 
   // Read temperature and humidity
   float temperature = dht.readTemperature();
   float humidity = dht.readHumidity();
+  float lpg = mq2.readLPG();
+  float co = mq2.readCO();
+  float smoke = mq2.readSmoke();
 
   // Check if any reads failed and exit early
   if (isnan(temperature) || isnan(humidity)) {
@@ -102,9 +105,13 @@ void loop() {
   // Create JSON payload
   String postData = "{\"temperature\": " + String(temperature) +
                     ", \"humidity\": " + String(humidity) +
+                    ",\"lpg\":" + String(lpg) +
+                    ",\"co\":" + String(co) +
+                    ",\"smoke\":" + String(smoke) +
                     ", \"timestamp\": \"" + timestamp + "\"}";
 
   // Send the data to the Flask server
+  Serial.println(postData);
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
 
