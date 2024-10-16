@@ -14,9 +14,9 @@ DHT dht(DHTPIN, DHTTYPE);
 MQ2 mq2(A0_PIN);
 
 // WiFi configuration
-const char* ssid = "Shotzzy";       // Your WiFi SSID
-const char* password = "cosmos1234"; // Your WiFi Password
-const char* serverUrl = "http://192.168.100.62:5000/send_data"; // Your Flask server URL
+const char* ssid = "*****";       // Your WiFi SSID
+const char* password = "*****"; // Your WiFi Password
+const char* serverUrl = "http://*******/send_data"; // Your Flask server URL
 
 // NTP time settings
 const char* ntpServer = "pool.ntp.org";
